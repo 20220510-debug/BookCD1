@@ -12,7 +12,9 @@ class Book extends Model
         'stock',
         'category_id',
         'publisher_id',
+        'book_type',
         'image',
+        'ebook_file',
         'description'
     ];
 
@@ -39,5 +41,10 @@ class Book extends Model
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    public function isOnline(): bool
+    {
+        return $this->book_type === 'online';
     }
 }
